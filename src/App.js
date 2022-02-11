@@ -1,7 +1,11 @@
-import { useState } from 'react';
+// import { useState } from 'react';
+// import Example from './Example';
 import Navbar from './Navbar';
 import Home from './Home';
-import Example from './Example';
+import CreateBlog from './CreateBlog';
+
+import { BrowserRouter as Router, Route, Switch} from 'react-router-dom'
+import BlogDetails from './BlogDetails';
 
 // Templates
 function App() {
@@ -17,13 +21,23 @@ function App() {
   // }
   return (
     <div className="App">
-      <Navbar />
-  
-      <div className="content">
-        <Home />
-        {/* <Example/> */}
-
-      </div>
+      <Router>
+          <Navbar />
+          <div className="content">
+            <Switch>
+                <Route exact path='/'>
+                  <Home />
+                </Route>
+                <Route path='/create'>
+                  <CreateBlog></CreateBlog>
+                </Route>
+                <Route path='/blogs'>
+                  <BlogDetails></BlogDetails>
+                </Route>
+            </Switch>
+                {/* <Example/> */}
+           </div>
+      </Router>
     </div>
   );
 }

@@ -1,6 +1,6 @@
-import Comments from "./Comments"
+// import Comments from "./Comments"
+import { Link } from "react-router-dom";
 const BlogList = ({blogs, name,comments}) => {
-    // const { data: comments} = useComments('http://localhost:5000/comments');
 
     return(
         <div className='blog-list'>
@@ -8,14 +8,15 @@ const BlogList = ({blogs, name,comments}) => {
             { blogs.map( blog => {
                 let { id, title, author, body} = blog;
                 return(
-                    <div className='blogcomment'>
                         <div className='blog-view' key={id}>
-                            <h2>{title}</h2><hr></hr>
-                            <p>written by:{author},</p><br></br>
-                            <p>{body}</p>
+                           <Link to='/blogs'>
+                                <h2>{title}</h2><hr></hr>
+                                 <p>written by:{author},</p><br></br>
+                                 <p>Read More.......</p>
+                                 {/* <p>{body} </p> */}
+                                 {/* {comments && <Comments comments={comments} prop={id}></Comments>} */}
+                           </Link>
                         </div>
-                        {comments && <Comments comments={comments} prop={id}></Comments>}
-                    </div>
                 )}
             )}
             
